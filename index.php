@@ -18,6 +18,10 @@
   			<button class="button is-primary is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>
  			<button class="button is-primary is-light team team2" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
 		</div>
+		<div class="buttons divisional" id="w12m3">
+  			<button class="button is-primary is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionarie Donkeys</button>
+ 			<button class="button is-primary is-light team team2" id="ayranciwin1" data-teamname="ayranci">South Ayrancı Phrygians</button>
+		</div>
     </div>
 
   </section>
