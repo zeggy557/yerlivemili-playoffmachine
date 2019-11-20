@@ -1,0 +1,36 @@
+{
+  "employees": [
+    {
+      "name": "izgecangunal",
+      "id": 1,
+      "firstname": "İzgecan",
+      "lastname": "Günal",
+      "age": "25",
+      "motorsports": 1,
+    },
+    {
+      "name": "maliselisik",
+      "id": 2,
+      "firstname": "Mehmet Ali",
+      "lastname": "Selışık",
+      "age": "25",
+      "motorsports": 1,
+    },
+    {
+      "name": "emreyaziciol",
+      "id": 3,
+      "firstname": "Emre",
+      "lastname": "Yazıcol",
+      "age": "36",
+      "motorsports": 0,
+    },
+    {
+      "name": "Erman Yaşar",
+      "id": 4,
+      "firstname": "Erman",
+      "lastname": "Yaşar",
+      "age": "34",
+      "motorsports": 0,
+    },
+  ]
+}
