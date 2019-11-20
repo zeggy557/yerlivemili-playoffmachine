@@ -14,8 +14,12 @@
 	<body>
 		 <section class="section">
     <div class="container" id="maincontainer">
-
+    	<div class="buttons" id="w12m1">
+  			<button class="button is-primary is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>
+ 			<button class="button is-primary is-light team team2" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
+		</div>
     </div>
+
   </section>
 	</body>
 </html>
