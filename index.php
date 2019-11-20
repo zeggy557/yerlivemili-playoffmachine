@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<section class="section">
-    		<div class="container" id="maincontainer">
+    		<div class="container" id="selectioncontainer">
     			<div class="columns" id="matchweeks">
   					<div class="column" id="matchweek12">
 				    	<div class="buttons" id="w12m1">
@@ -69,6 +69,79 @@
  					</div>
  				</div>
  		   </div>
+		<section class="section">
+			<div class="container" id="tablecontainer">
+				<div class="columns" id="divisions">
+					<div class="column" id="division1">
+						<div class="divisionname">Division 1</div>
+						<table class="table">
+						<thead>
+						    <tr>
+						    	<th><abbr title="Position">Pos</abbr></th>
+						    	<th>Team</th>
+						    	<th><abbr title="Win-Loss">W-L</abbr></th>
+						    	<th><abbr title="Divisional Win-Loss">Div W-L</abbr></th>
+						    	<th><abbr title="Points Scores">Pts</abbr></th>
+						     	<th>Playoffs?</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						</table>
+					</div>
+					<div class="column" id="division2">
+						<div class="divisionname">Division 2</div>
+						<table class="table">
+						<thead>
+						    <tr>
+						    	<th><abbr title="Position">Pos</abbr></th>
+						    	<th>Team</th>
+						    	<th><abbr title="Win-Loss">W-L</abbr></th>
+						    	<th><abbr title="Divisional Win-Loss">Div W-L</abbr></th>
+						    	<th><abbr title="Points Scores">Pts</abbr></th>
+						     	<th>Playoffs?</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						</table>
+					</div>
+					<div class="column" id="division3">
+						<div class="divisionname">Division 3</div>
+						<table class="table">
+						<thead>
+						    <tr>
+						    	<th><abbr title="Position">Pos</abbr></th>
+						    	<th>Team</th>
+						    	<th><abbr title="Win-Loss">W-L</abbr></th>
+						    	<th><abbr title="Divisional Win-Loss">Div W-L</abbr></th>
+						    	<th><abbr title="Points Scores">Pts</abbr></th>
+						     	<th>Playoffs?</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						</table>
+					</div>
+					<div class="column" id="division4">
+						<div class="divisionname">Division 4</div>
+						<table class="table">
+						<thead>
+						    <tr>
+						    	<th><abbr title="Position">Pos</abbr></th>
+						    	<th>Team</th>
+						    	<th><abbr title="Win-Loss">W-L</abbr></th>
+						    	<th><abbr title="Divisional Win-Loss">Div W-L</abbr></th>
+						    	<th><abbr title="Points Scores">Pts</abbr></th>
+						     	<th>Playoffs?</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						</table>
+					</div>
+				</div>	
+			</div>
 		</section>
 	</body>
 </html>

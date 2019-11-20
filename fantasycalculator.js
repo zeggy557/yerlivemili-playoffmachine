@@ -38,10 +38,10 @@ $(document).ready(function() {
 				lteamdata = data.teams[lteam];
 				wid = wteamdata.id;
 				lid = lteamdata.id;
-				console.log("current state");
+				/*console.log("current state");
 				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
 				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
-				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]);
+				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]); */
 
 				if ($(this).parent().hasClass("divisional")) {
 					if(wteamdata.winlist[lid] + lteamdata.winlist[wid] === 1) {
@@ -83,10 +83,11 @@ $(document).ready(function() {
 						lteamdata.losses++;
 					}
 				}
-				console.log("new state");
+				/* console.log("new state");
 				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
 				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
-				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]);
+				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]); */
+
 			}
 
 		 });
