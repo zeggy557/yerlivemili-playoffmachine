@@ -6,7 +6,7 @@ $(document).ready(function() {
 		  	$.each(val.winlist, function (key, val) {
 		  		totalwins += val;
 		  	});
-		  	var newdiv = "<div>" +  val.fullname + " W: " + val.wins + " TW: "+ totalwins + " L: " + val.losses + " DW: " + val.divwins + " DL: " + val.divlosses + "/<div>";
+		  	var newdiv = "<div>" +  val.fullname + " W: " + val.wins + " TW: "+ totalwins + " L: " + val.losses + " DW: " + val.divwins + " DL: " + val.divlosses + "</div>";
 		  	console.log(newdiv);
 		  	$(newdiv).appendTo("body"); 
 		  });
