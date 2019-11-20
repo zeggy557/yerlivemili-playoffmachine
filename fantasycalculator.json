@@ -1,36 +1,136 @@
 {
-  "employees": [
-    {
-      "name": "izgecangunal",
+  "teams": {
+    "donkeys": {
+      "name": "donkeys",
+      "id": 0,
+      "fullname": "Billionaire Donkeys",
+      "wins": 9,
+      "losses": 2,
+      "divwins": 1,
+      "divlosses": 1,
+      "points": 1331.26,
+      "winlist": [0,0,1,1,1,1,1,0,1,1,1,1]
+    },
+    "ayranci": {
+      "name": "ayranci",
       "id": 1,
-      "firstname": "İzgecan",
-      "lastname": "Günal",
-      "age": "25",
-      "motorsports": 1,
+      "fullname": "South Ayrancı Phrygians",
+      "wins": 7,
+      "losses": 4,
+      "divwins": 2,
+      "divlosses": 1,
+      "points": 1187.06,
+      "winlist": [1,0,1,1,0,0,0,1,1,1,1,0]
     },
-    {
-      "name": "maliselisik",
+    "crows": {
+      "name": "crows",
       "id": 2,
-      "firstname": "Mehmet Ali",
-      "lastname": "Selışık",
-      "age": "25",
-      "motorsports": 1,
+      "fullname": "Goztepe Crows",
+      "wins": 5,
+      "losses": 6,
+      "divwins": 1,
+      "divlosses": 2,
+      "points": 1103.68,
+      "winlist": [0,1,0,0,1,1,1,1,0,0,0,0]
     },
-    {
-      "name": "emreyaziciol",
+   "heuvelring": {
+      "name": "heuvelring",
       "id": 3,
-      "firstname": "Emre",
-      "lastname": "Yazıcol",
-      "age": "36",
-      "motorsports": 0,
+      "fullname": "Heuvelring Moahir Goats",
+      "wins": 6,
+      "losses": 5,
+      "divwins": 2,
+      "divlosses": 1,
+      "points": 1086.30,
+      "winlist": [0,0,0,0,1,1,1,0,1,0,1,1]
     },
-    {
-      "name": "Erman Yaşar",
+    "deliyurek": {
+      "name": "deliyurek",
       "id": 4,
-      "firstname": "Erman",
-      "lastname": "Yaşar",
-      "age": "34",
-      "motorsports": 0,
+      "fullname": "DeliYurekMirOglusu",
+      "wins": 4,
+      "losses": 7,
+      "divwins": 2,
+      "divlosses": 1,
+      "points": 1119.94,
+      "winlist": [0,0,0,1,0,1,0,0,0,1,0,1]
     },
-  ]
+    "blackeagles": {
+      "name": "blackeagles",
+      "id": 5,
+      "fullname": "Wisconsin Blackeagles",
+      "wins": 4,
+      "losses": 7,
+      "divwins": 0,
+      "divlosses": 2,
+      "points": 1094.90,
+      "winlist": [0,1,0,0,0,0,0,0,0,1,1,1]
+    },
+    "killers": {
+      "name": "killers",
+      "id": 6,
+      "fullname": "The Cereal Killers",
+      "wins": 6,
+      "losses": 5,
+      "divwins": 1,
+      "divlosses": 2,
+      "points": 1292.84,
+      "winlist": [0,1,0,0,1,1,0,1,0,0,1,1]
+    },
+    "luol" :{
+      "name": "luol",
+      "id": 7,
+      "fullname": "Luol Dengim Değilsin",
+      "wins": 6,
+      "losses": 5,
+      "divwins": 1,
+      "divlosses": 2,
+      "points": 1241.12,
+      "winlist": [1,0,0,1,1,1,1,0,0,1,0,0]
+    },
+    "karsiyaka": {
+      "name": "karsiyaka",
+      "id": 8,
+      "fullname": "Karsiyaka 35 5ers",
+      "wins": 5,
+      "losses": 6,
+      "divwins": 2,
+      "divlosses": 0,
+      "points": 1146.18,
+      "winlist": [0,0,1,0,1,1,1,1,0,0,0,0]
+    },
+    "gisele": {
+      "name": "gisele",
+      "id": 9,
+      "fullname": "Gisele'in Askerleri",
+      "wins": 5,
+      "losses": 6,
+      "divwins": 2,
+      "divlosses": 1,
+      "points": 1169.14,
+      "winlist": [0,0,1,1,0,0,0,0,1,0,1,1]
+    },
+    "evli": {
+      "name": "evli",
+      "id": 10,
+      "fullname": "Evli Mayfields",
+      "wins": 5,
+      "losses": 6,
+      "divwins": 1,
+      "divlosses": 1,
+      "points": 1126.94,
+      "winlist": [0,0,1,0,1,0,0,1,1,0,0,1]
+    },
+    "nokia": {
+      "name": "nokia",
+      "id": 11,
+      "fullname": "İnce Nokia Chargers",
+      "wins": 4,
+      "losses": 7,
+      "divwins": 1,
+      "divlosses": 2,
+      "points": 1079.32,
+      "winlist": [0,1,1,0,0,0,0,0,1,1,0,0]
+    }
+  }
 }
