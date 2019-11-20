@@ -36,11 +36,12 @@ $(document).ready(function() {
 				lteam = otherteam.attr("data-teamname");
 				wteamdata = data.teams[wteam];
 				lteamdata = data.teams[lteam];
-				console.log("current state");
-				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
-				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);
 				wid = wteamdata.id;
 				lid = lteamdata.id;
+				console.log("current state");
+				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
+				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
+				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]);
 
 				if ($(this).parent().hasClass("divisional")) {
 					if(wteamdata.winlist[lid] + lteamdata.winlist[wid] === 1) {
@@ -84,7 +85,8 @@ $(document).ready(function() {
 				}
 				console.log("new state");
 				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
-				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);
+				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
+				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]);
 			}
 
 		 });
