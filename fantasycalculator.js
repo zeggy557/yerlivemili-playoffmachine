@@ -6,9 +6,9 @@ $(document).ready(function() {
 		  	$.each(val.winlist, function (key, val) {
 		  		totalwins += val;
 		  	});
-		  	var newdiv = "<div>" +  val.fullname + " W: " + val.wins + " TW: "+ totalwins + " L: " + val.losses + " DW: " + val.divwins + " DL: " + val.divlosses + " Points: " + val.points + "</div>";
-		  	console.log(newdiv);
-		  	$(newdiv).appendTo("body"); 
+		  	var newdiv = "<div>" +  val.fullname + " W: " + val.wins + " L: " + val.losses + " DW: " + val.divwins + " DL: " + val.divlosses + " Points: " + val.points + "</div>";
+		  	$(newdiv).appendTo("#maincontainer"); 
+
 		  });
 
 	});
