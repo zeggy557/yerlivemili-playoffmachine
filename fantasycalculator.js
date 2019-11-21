@@ -55,11 +55,11 @@ function tiebreakMultipleTeamsWC (wcteams) {
 		eliminate = [];
 		$.each(wcteams, function(key,val) {
 			if(wincounts[key] === wcteams.length -1) {
-				console.log(val.fullname + " gets ahead of his opponents by having H2H wins against all of them!");
+				$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead of his opponents by having H2H wins against all of them!</div>" );
 				return val;
 			}
 			else if(wincounts[key] === 0) {
-				console.log(val.fullname + "is eliminated because he has zero H2H wins against his opponents!");
+				$(".tiebreakers-explanation").append("<div>" + val.fullname + " is eliminated because he has zero H2H wins against his opponents!</div>");
 				eliminate.push(key);
 			}
 		});
@@ -67,7 +67,7 @@ function tiebreakMultipleTeamsWC (wcteams) {
 			wcteams.splice(val,1);
 		});
 		if(wcteams.length === 1) {
-			console.log(wcteams[0].fullname + " gets ahead of his opponents by having H2H wins against all of them!");
+			$(".tiebreakers-explanation").append("<div>" + wcteams[0].fullname + " gets ahead of his opponents by having H2H wins against all of them!</div>");
 			return wcteams[0];
 		}
 		if(wcteams.length === 2) {
@@ -89,8 +89,8 @@ function tiebreakMultipleTeamsWC (wcteams) {
 						mpindex = key;
 					}
 				}
-			});
-			console.log(wcteams[0].fullname + " gets ahead of his opponents by scoring more points!");
+			}); 
+			$(".tiebreakers-explanation").append("<div>" +wcteams[0].fullname + " gets ahead of his opponents by scoring more points!</div>");
 			return wcteams[mpindex];
 		}
 	}
@@ -101,20 +101,20 @@ function tiebreakTwoTeamsWC (firstteam, secondteam){
 	else if(firstteam.wins < secondteam.wins) return 2;
 	else {
 		if(firstteam.winlist[secondteam.id] > secondteam.winlist[firstteam.id]) {
-			console.log(firstteam.fullname + " gets ahead of " + secondteam.fullname + " by H2H wins.");
+			$(".tiebreakers-explanation").append("<div>" + firstteam.fullname + " gets ahead of " + secondteam.fullname + " by H2H wins.</div>");
 			return 1;
 		}
 		else if(firstteam.winlist[secondteam.id] < secondteam.winlist[firstteam.id]) {
-			console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by H2H wins.");
+			$(".tiebreakers-explanation").append("<div>" +secondteam.fullname + " gets ahead of " + firstteam.fullname + " by H2H wins</div>");
 			return 2;
 		}
 		else {
 			if(firstteam.points > secondteam.points) {
-				console.log(firstteam.fullname + " gets ahead of " + secondteam.fullname + " by scoring more points.");
+				$(".tiebreakers-explanation").append("<div>" +firstteam.fullname + " gets ahead of " + secondteam.fullname + " by scoring more points.</div>");
 				return 1;	
 			} 
 			else if(firstteam.points < secondteam.points) {
-				console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by scoring more points");
+				$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by scoring more points</div>");
 				return 2;	
 			} 
 			else {
@@ -139,29 +139,29 @@ function tiebreakTwoTeamsInDivision (firstteam, secondteam){
 	else if(firstteam.wins < secondteam.wins) return 2;
 	else {
 		if(firstteam.winlist[secondteam.id] > secondteam.winlist[firstteam.id]) {
-			console.log(firstteam.fullname + " gets ahead of " + secondteam.fullname + " by H2H wins.");
+			$(".tiebreakers-explanation").append("<div>" + firstteam.fullname + " gets ahead of " + secondteam.fullname + " by H2H wins.</div>");
 			return 1;
 		}
 		else if(firstteam.winlist[secondteam.id] < secondteam.winlist[firstteam.id]) {
-			console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by H2H wins.");
+			$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by H2H wins.</div>");
 			return 2;
 		}
 		else {
 			if(firstteam.divwins > secondteam.divwins){
-				console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more divisional wins.");
+				$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more divisional wins.</div>");
 				return 1;
 			}
 			else if(firstteam.divwins < secondteam.divwins){
-				console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more divisional wins.");
+				$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more divisional wins.</div>");
 				return 2;
 			}
 			else {
 				if(firstteam.points > secondteam.points) {
-					console.log(firstteam.fullname + " gets ahead of " + secondteam.fullname + " by more points scored.");
+					$(".tiebreakers-explanation").append("<div>" + firstteam.fullname + " gets ahead of " + secondteam.fullname + " by more points scored.</div>");
 					return 1;	
 				} 
 				else if(firstteam.points < secondteam.points) {
-					console.log(secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more points scored.");
+					$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more points scored.</div>");
 					return 2;	
 				}
 				else {
@@ -199,7 +199,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 		var tmp = sorteddiv[0];
 		sorteddiv[0] = sorteddiv[mdwindex];
 		sorteddiv[mdwindex] = tmp;
-		console.log(sorteddiv[0].fullname + " wins division by having more divisional wins!");
+		$(".tiebreakers-explanation").append("<div>" + sorteddiv[0].fullname + " wins division by having more divisional wins!</div>");
 		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 		if(winner === 2) {
 			tmp = sorteddiv[1];
@@ -230,7 +230,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 		var tmp = sorteddiv[0];
 		sorteddiv[0] = sorteddiv[mpindex];
 		sorteddiv[mpindex] = tmp;
-		console.log(sortediv[0].fullname + " wins division by scoring more points!");
+		$(".tiebreakers-explanation").append("<div>" + sortediv[0].fullname + " wins division by scoring more points!</div>");
 		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 		if(winner === 2) {
 			tmp = sorteddiv[1];
@@ -254,7 +254,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 			var tmp = sorteddiv[0];
 			sorteddiv[0] = sorteddiv[threedivwins[0]];
 			sorteddiv[threedivwins[0]] = tmp;
-			console.log(sorteddiv[0].fullname + " wins division by having more divisional wins!");
+			$(".tiebreakers-explanation").append("<div>" + sorteddiv[0].fullname + " wins division by having more divisional wins!</div>");
 			winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 			if(winner === 2) {
 				tmp = sorteddiv[1];
@@ -320,8 +320,6 @@ function populateTables (teams) {
 	var secondplacetiebreaker = [];
 	//sort by wins first
 	$.each(divisions, function (key, division) {
-		var flag = 0
-		if(key === 0) flag=1;
 		sorteddiv = [];
 		firstplacetiebreaker = [];
 		secondplacetiebreaker = [];
@@ -333,11 +331,6 @@ function populateTables (teams) {
 				firstplacetiebreaker = [];
 			}
 			else if(team.wins === mostwins) {
-				if(flag === 1) {
-					console.log("firstplacetiebreaker pushed " + team.fullname);
-					console.log(team.fullname + " wins: " + team.wins);
-					console.log("the leader: " + division[mwindex].fullname + " with " + mostwins + " wins");
-				}
 				firstplacetiebreaker.push(team);
 			}
 		});
@@ -354,11 +347,9 @@ function populateTables (teams) {
 		else {
 			sorteddiv.push(division[0]);
 			sorteddiv.push(division[1]);
-			if(flag === 1) console.log("secondplacetiebreaker pushed " + division[0].fullname + " and " + division[1].fullname);
 			secondplacetiebreaker.push(division[0]);
 			secondplacetiebreaker.push(division[1]);
 		}
-		if(flag === 1) console.log("going to tiebreakDivision with this order:" + sorteddiv[0].fullname + sorteddiv[1].fullname + sorteddiv[2].fullname);
 		sorteddiv = tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
 		var tableofdiv = key;
 		$('table[data-id="' + tableofdiv + '"]').children("tbody").empty();
@@ -378,8 +369,7 @@ $(document).ready(function() {
 		$(".team").click(function() {
 			if($(this).hasClass("active-toggle") === false) {
 				$(this).addClass("active-toggle");
-				$(this).addClass("is-danger");
-				$(this).removeClass("is-primary");
+				$(this).addClass("is-success");
 				var otherteam;
 				if($(this).hasClass("team1")) {
 			 		var otherteam = $(this).siblings(".team2");
@@ -388,8 +378,7 @@ $(document).ready(function() {
 			 		var otherteam = $(this).siblings(".team1");
 			 	}
 			 	otherteam.removeClass("active-toggle");
-			 	otherteam.addClass("is-primary")
-			 	otherteam.removeClass("is-danger");
+			 	otherteam.removeClass("is-success");
 
 			 	var wteam, lteam, wid, lid;
 				wteam = $(this).attr("data-teamname");
@@ -398,10 +387,6 @@ $(document).ready(function() {
 				lteamdata = data.teams[lteam];
 				wid = wteamdata.id;
 				lid = lteamdata.id;
-				/*console.log("current state");
-				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
-				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
-				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]); */
 
 				if($(this).parent().hasClass("divisional")) {
 					if(wteamdata.winlist[lid] + lteamdata.winlist[wid] === 1) {
@@ -443,12 +428,8 @@ $(document).ready(function() {
 						lteamdata.losses++;
 					}
 				}
-				/* console.log("new state");
-				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
-				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
-				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]); */
+				$(".tiebreakers-explanation").empty();
 				populateTables(data.teams);
-				console.log(data.teams.crows, data.teams.ayranci);
 
 			}
 
