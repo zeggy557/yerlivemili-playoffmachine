@@ -334,6 +334,8 @@ $(document).ready(function() {
 		$(".team").click(function() {
 			if($(this).hasClass("active-toggle") === false) {
 				$(this).addClass("active-toggle");
+				$(this).addClass("is-danger");
+				$(this).removeClass("is-primary");
 				var otherteam;
 				if($(this).hasClass("team1")) {
 			 		var otherteam = $(this).siblings(".team2");
@@ -342,6 +344,8 @@ $(document).ready(function() {
 			 		var otherteam = $(this).siblings(".team1");
 			 	}
 			 	otherteam.removeClass("active-toggle");
+			 	otherteam.addClass("is-primary")
+			 	otherteam.removeClass("is-danger");
 
 			 	var wteam, lteam, wid, lid;
 				wteam = $(this).attr("data-teamname");
