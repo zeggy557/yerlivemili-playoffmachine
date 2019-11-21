@@ -230,7 +230,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 		var tmp = sorteddiv[0];
 		sorteddiv[0] = sorteddiv[mpindex];
 		sorteddiv[mpindex] = tmp;
-		console.log(sortediv[0].fullname " wins division by scoring more points!");
+		console.log(sortediv[0].fullname + " wins division by scoring more points!");
 		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 		if(winner === 2) {
 			tmp = sorteddiv[1];
@@ -254,7 +254,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 			var tmp = sorteddiv[0];
 			sorteddiv[0] = sorteddiv[threedivwins[0]];
 			sorteddiv[threedivwins[0]] = tmp;
-			console.log(sorteddiv[0].fullname " wins division by having more divisional wins!");
+			console.log(sorteddiv[0].fullname + " wins division by having more divisional wins!");
 			winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 			if(winner === 2) {
 				tmp = sorteddiv[1];
