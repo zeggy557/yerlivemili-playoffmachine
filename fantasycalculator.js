@@ -31,6 +31,7 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 			eliminate.push(key);
 		}
 	});
+	console.log("mostwins: ",mostwins, "team: " + wcteams[mwindex].fullname);
 	for (var i = eliminate.length -1; i >= 0; i--) { 
 		wcteams.splice(eliminate[i], 1);
     }
@@ -436,7 +437,7 @@ function populateTables (teams) {
 	});
 
 
-	var constipation = [];
+	/*var constipation = [];
 	$.each(teams, function(key,val) {
 		if ($('tr[data-team-id="' + val.id + '"]').hasClass("has-background-primary") === false) constipation.push(val);		
 	});
@@ -445,7 +446,6 @@ function populateTables (teams) {
 
 	var consseeds = [];
 	for (i=0; i<4; i++) {
-		console.log(i);
 		consseeds.push(tiebreakMultipleTeamsWC(constipation));
 		$.each(constipation, function (key, val) {
 			if(consseeds[i].id === val.id) {
@@ -454,11 +454,9 @@ function populateTables (teams) {
 			}
 		});
 	}
-	console.log(4);
 	winner = tiebreakTwoTeamsWC(constipation[0], constipation[1]) -1;
 	consseeds.push(constipation[winner]);
 	constipation.splice(winner,1);
-	console.log(5);
 	consseeds.push(constipation[0]);
 	console.log(consseeds);
 	$.each(consseeds, function(key,val) {
@@ -466,7 +464,7 @@ function populateTables (teams) {
 		$('tr[data-team-id="' + val.id + '"]').children().last().remove();
 		$('tr[data-team-id="' + val.id + '"]').append("<th> #" + seednumber  + "</th>");
 
-	});
+	});*/
 
 
 
