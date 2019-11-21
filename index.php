@@ -13,57 +13,64 @@
 	</head>
 	<body>
 		<section class="section">
+			<div class="container">
+				<div class="title week-title">YERLİ VE MİLLİ PLAYOFF MACHINE</div> 
+			</div>
+		</section>
+		<section class="section">
     		<div class="container" id="selectioncontainer">
     			<div class="columns" id="matchweeks">
   					<div class="column" id="matchweek12">
-				    	<div class="buttons" id="w12m1">
-				  			<button class="button   is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>
+  						<div class="week-title subtitle is-centered">Week 12</div>
+				    	<div class="buttons is-centered" id="w12m1">
+				  			<button class="button   is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>vs
 				 			<button class="button   is-light team team2" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
 						</div>
-						<div class="buttons" id="w12m2">
-				  			<button class="button   is-light team team1" id="crowswin1" data-teamname="crows">Göztepe Crows</button>
+						<div class="buttons is-centered" id="w12m2">
+				  			<button class="button   is-light team team1" id="crowswin1" data-teamname="crows">Göztepe Crows</button>vs
 				 			<button class="button   is-light team team2" id="heuvelringwin1" data-teamname="heuvelring">Heuvelring Mohair Goats</button>
 						</div>
-						<div class="buttons divisional" id="w12m3">
-				  			<button class="button  is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionarie Donkeys</button>
+						<div class="buttons is-centered divisional" id="w12m3">
+				  			<button class="button  is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionarie Donkeys</button>vs
 				 			<button class="button  is-light team team2" id="ayranciwin1" data-teamname="ayranci">South Ayrancı Phrygians</button>
 						</div>
-						<div class="buttons divisional" id="w12m4">
-				  			<button class="button is-light team team1" id="giselewin1" data-teamname="gisele">Gisele'in Askerleri</button>
+						<div class="buttons is-centered divisional" id="w12m4">
+				  			<button class="button is-light team team1" id="giselewin1" data-teamname="gisele">Gisele'in Askerleri</button>vs
 				 			<button class="button is-light team team2" id="evliwin1" data-teamname="evli">Evli Mayfields</button>
 						</div>
-						<div class="buttons divisional" id="w12m5">
-				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>
+						<div class="buttons is-centered divisional" id="w12m5">
+				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>vs
 				 			<button class="button   is-light team team2" id="blackeagleswin1" data-teamname="blackeagles">Wisconsin Blackeagles</button>
 						</div>
-						<div class="buttons divisional" id="w12m6">
-				  			<button class="button   is-light team team1" id="killerswin1" data-teamname="killers">The Cereal Killers</button>
+						<div class="buttons is-centered divisional" id="w12m6">
+				  			<button class="button   is-light team team1" id="killerswin1" data-teamname="killers">The Cereal Killers</button>vs
 				 			<button class="button   is-light team team2" id="karsiyakawin1" data-teamname="karsiyaka">Karşıyaka 35,5ers</button>
 						</div>
   					</div>
   					<div class="column" id="matchweek13">
-   						<div class="buttons" id="w13m1">
-				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>
+  						<div class="week-title subtitle is-centered">Week 13</div>
+   						<div class="buttons is-centered" id="w13m1">
+				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>vs
 				 			<button class="button   is-light team team2" id="ayranciwin1" data-teamname="ayranci">South Ayrancı Phrygians</button>
 						</div>
-						<div class="buttons" id="w13m2">
-				  			<button class="button   is-light team team1" id="killerswin1" data-teamname="killers">The Cereal Killers</button>
+						<div class="buttons is-centered" id="w13m2">
+				  			<button class="button   is-light team team1" id="killerswin1" data-teamname="killers">The Cereal Killers</button>vs
 				 			<button class="button   is-light team team2" id="giselewin1" data-teamname="gisele">Gisele'in Askerleri</button>
 						</div>
-						<div class="buttons divisional" id="w13m3">
-				  			<button class="button   is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>
+						<div class="buttons is-centered divisional" id="w13m3">
+				  			<button class="button   is-light team team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>vs
 				 			<button class="button   is-light team team2" id="karsiyakawin1" data-teamname="karsiyaka">Karşıyaka 35,5ers</button>
 						</div>
-						<div class="buttons divisional" id="w13m4">
-				  			<button class="button   is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionaire Donkeys</button>
+						<div class="buttons is-centered divisional" id="w13m4">
+				  			<button class="button   is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionaire Donkeys</button>vs
 				 			<button class="button   is-light team team2" id="goztepewin1" data-teamname="crows">Göztepe Crows</button>
 						</div>
-						<div class="buttons divisional" id="w13m5">
-				  			<button class="button   is-light team team1" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
+						<div class="buttons is-centered divisional" id="w13m5">
+				  			<button class="button   is-light team team1" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>vs
 				 			<button class="button   is-light team team2" id="evliwin1" data-teamname="evli">Evli Mayfields</button>
 						</div>
-						<div class="buttons divisional" id="w13m6">
-				  			<button class="button   is-light team team1" id="blackeagleswin1" data-teamname="blackeagles">Wisconsin Blackeagles</button>
+						<div class="buttons is-centered divisional" id="w13m6">
+				  			<button class="button   is-light team team1" id="blackeagleswin1" data-teamname="blackeagles">Wisconsin Blackeagles</button>vs
 				 			<button class="button   is-light team team2" id="heuvelringwin1" data-teamname="heuvelring">Heuvelring Mohair Goats</button>
 						</div>
  					</div>
@@ -74,7 +81,7 @@
 			<div class="container" id="tablecontainer">
 				<div class="columns">
 					<div class="column" id="division1" >
-						<div class="divisionname">Division 1</div>
+						<div class="divisionname subtitle">Division 1</div>
 						<table class="table" data-id=0>
 						<thead>
 						    <tr>
@@ -91,7 +98,7 @@
 						</table>
 					</div>
 					<div class="column" id="division2" >
-						<div class="divisionname">Division 2</div>
+						<div class="divisionname subtitle">Division 2</div>
 						<table class="table" data-id=1>
 						<thead>
 						    <tr>
@@ -110,7 +117,7 @@
 				</div>
 				<div class="columns">
 					<div class="column" id="division3" >
-						<div class="divisionname">Division 3</div>
+						<div class="divisionname subtitle">Division 3</div>
 						<table class="table" data-id=2>
 						<thead>
 						    <tr>
@@ -127,7 +134,7 @@
 						</table>
 					</div>
 					<div class="column" id="division4" >
-						<div class="divisionname">Division 4</div>
+						<div class="divisionname subtitle">Division 4</div>
 						<table class="table" data-id=3>
 						<thead>
 						    <tr>
@@ -149,7 +156,7 @@
 		<section class="section">
 			<div class="container" id="explanationcontainer">
 				<div class="columns is-centered">
-					<div class="column is-half tiebreakers-explanation">
+					<div class="column tiebreakers-explanation is-centered">
 					</div>
 				</div>	
 			</div>		

@@ -8,5 +8,16 @@
 
 .tiebreaker-title {
 	text-align: center;
-	font-weight: bold;
+}
+
+.tiebreakers-explanation {
+	text-align: center;
+}
+
+.team2 {
+	margin-left: 0.5rem;
+}
+
+.week-title {
+	text-align: center;
 }
