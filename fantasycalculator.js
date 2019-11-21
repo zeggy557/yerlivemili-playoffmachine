@@ -34,8 +34,8 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 	for (var i = eliminate.length -1; i >= 0; i--) { 
 		wcteams.splice(eliminate[i], 1);
     }
-    console.log("wcteams.length=", wcteams.length);
 	if(wcteams.length === 1) {
+		console.log(wcteams[0]);
 		return wcteams[0];
 	}
 	if(wcteams.length === 2) {
@@ -57,7 +57,6 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 			}
 			wincounts.push(wincount);
 		});
-		console.log(wincounts[0],wincounts[1],wincounts[2]);
 		eliminate = [];
 		$.each(wcteams, function(key,val) {
 			if(wincounts[key] === wcteams.length -1) {
@@ -68,9 +67,9 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 					}
 				}
 				if(opponentsList.length === 3)
-					$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead of his opponents by having H2H wins against all his opponents: " + opponentsList[0].fullname + ", " +opponentsList[1].fullname + " and " + opponentsList[2].fullname + ".</div>" );
+					$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead by having H2H wins against all his opponents: " + opponentsList[0].fullname + ", " +opponentsList[1].fullname + " and " + opponentsList[2].fullname + ".</div>" );
 				else if(opponentsList.length === 2)
-					$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead of his opponents by having H2H wins against all his opponents: " + opponentsList[0].fullname + " and " + opponentsList[1].fullname + ".</div>" );
+					$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead by having H2H wins against all his opponents: " + opponentsList[0].fullname + " and " + opponentsList[1].fullname + ".</div>" );
 				returnValue = val;
 				return false; //gets out of the loop, not the function
 			}
@@ -84,7 +83,7 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 				if(opponentsList.length === 3)
 					$(".tiebreakers-explanation").append("<div>" + val.fullname + " has no H2H wins against his opponents " + opponentsList[0].fullname + ", " +opponentsList[1].fullname + " and " + opponentsList[2].fullname + ".</div>");
 				else if(opponentsList.length === 2)
-					$(".tiebreakers-explanation").append("<div>" + val.fullname + " has no H2H wins against his opponents " + opponentsList[0].fullname + " and " + opponentsList[0].fullname + ".</div>");
+					$(".tiebreakers-explanation").append("<div>" + val.fullname + " has no H2H wins against his opponents " + opponentsList[0].fullname + " and " + opponentsList[1].fullname + ".</div>");
 				eliminate.push(key);
 			}
 		});
@@ -389,12 +388,8 @@ function populateTables (teams) {
 	var seeds = [];
 	var groupwinners = [divisions[0][0], divisions[1][0],divisions[2][0],divisions[3][0]];
 	$(".tiebreakers-explanation").append("<br/><div class='tiebreaker-title subtitle'>Seeding Tiebreakers:</div>");
-	console.log("groupwinners 1a: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
 	var seed1 = tiebreakMultipleTeamsWC(groupwinners);
-	console.log(seed1);
 	seeds.push(seed1);
-	console.log(seeds[0]);
-	console.log("groupwinners 1b: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
 	var exclude = seeds[0].division -1;
 	groupwinners = [];
 	for (var i=0; i<4;i++) {
@@ -402,12 +397,8 @@ function populateTables (teams) {
 			groupwinners.push(divisions[i][0]);
 		}
 	}
-	console.log("groupwinners 2a: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
 	var seed2 = tiebreakMultipleTeamsWC(groupwinners);
-	console.log("groupwinners 2b: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
-	console.log("seed2: ", seed2)
 	seeds.push(seed2);
-	console.log(seeds[1], seeds[2]);
 	var exclude2 = seeds[1].division -1;
 	groupwinners = [];
 	for (var i=0; i<4;i++) {
@@ -415,7 +406,6 @@ function populateTables (teams) {
 			groupwinners.push(divisions[i][0]);
 		}
 	}
-	console.log("groupwinners 3: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
 	var winner = tiebreakTwoTeamsWC(groupwinners[0],groupwinners[1]);
 	if(winner === 1 ) {
 		seeds.push(groupwinners[0]);
@@ -436,7 +426,6 @@ function populateTables (teams) {
 	}
 	wildcards.push(divisions[exclude][2]);
 	seeds.push(tiebreakMultipleTeamsWC(wildcards));
-	console.log(seeds);
 	var seednumber;
 	$.each(seeds, function(key,val) {
 		seednumber = key+1;
@@ -445,7 +434,43 @@ function populateTables (teams) {
 		$('tr[data-team-id="' + val.id + '"]').addClass("has-background-primary");
 
 	});
-	
+
+
+	var constipation = [];
+	$.each(teams, function(key,val) {
+		if ($('tr[data-team-id="' + val.id + '"]').hasClass("has-background-primary") === false) constipation.push(val);		
+	});
+
+	$(".tiebreakers-explanation").append("<br/><div class='tiebreaker-title subtitle'>Constipation Tiebreakers:</div>");
+
+	var consseeds = [];
+	for (i=0; i<4; i++) {
+		console.log(i);
+		consseeds.push(tiebreakMultipleTeamsWC(constipation));
+		$.each(constipation, function (key, val) {
+			if(consseeds[i].id === val.id) {
+				constipation.splice(key,1);
+				return false;
+			}
+		});
+	}
+	console.log(4);
+	winner = tiebreakTwoTeamsWC(constipation[0], constipation[1]) -1;
+	consseeds.push(constipation[winner]);
+	constipation.splice(winner,1);
+	console.log(5);
+	consseeds.push(constipation[0]);
+	console.log(consseeds);
+	$.each(consseeds, function(key,val) {
+		seednumber = key+7;
+		$('tr[data-team-id="' + val.id + '"]').children().last().remove();
+		$('tr[data-team-id="' + val.id + '"]').append("<th> #" + seednumber  + "</th>");
+
+	});
+
+
+
+
 
 }
 
