@@ -1,3 +1,5 @@
+var consFlag = 0;
+
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
@@ -14,34 +16,28 @@ function calculateTotalWins(winlist) {
 
 function tiebreakMultipleTeamsWC (wcteams1) {
 	var mostwins = 0;
-	var mwindex = 0;
 	var eliminate = [];
 	var winner;
 	var wcteams = $.extend(true, [], wcteams1); //deep clone the array
 	var returnValue = null;
 	$.each(wcteams, function (key, team) {
 		if(team.wins > mostwins) {
-				if(key !== 0) {
-					eliminate.push(mwindex);
-				}
-				mostwins = team.wins;
-				mwindex = key;
-		}
-		else if(team.wins < mostwins) {
-			eliminate.push(key);
+				mostwins = team.wins;			
 		}
 	});
-	console.log("mostwins: ",mostwins, "team: " + wcteams[mwindex].fullname);
-	console.log("wcteams:", wcteams[0], wcteams[1],wcteams[2],wcteams[3]);
-	console.log("eliminate indexes:", eliminate[0], eliminate[1], eliminate[2]);
+
+	$.each(wcteams, function(key,team) {
+			if (team.wins < mostwins) {
+				eliminate.push(key);
+			}
+	});
 	eliminate.sort(function(a, b){return a-b}); //sort eliminate
-	console.log("eliminate indexes:", eliminate[0], eliminate[1], eliminate[2]);
+
+
 	for (var i = eliminate.length -1; i >= 0; i--) {
 		wcteams.splice(eliminate[i], 1);
     }
-    console.log("wcteams after elimination:", wcteams[0], wcteams[1],wcteams[2],wcteams[3]);
 	if(wcteams.length === 1) {
-		console.log(wcteams[0]);
 		return wcteams[0];
 	}
 	if(wcteams.length === 2) {
@@ -121,7 +117,18 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 					}
 				}
 			}); 
-			$(".tiebreakers-explanation").append("<div>" +wcteams[0].fullname + " gets ahead of his opponents by scoring more points!</div>");
+			var opponentsList = [];
+			$.each(wcteams, function(key,val) {
+				opponentsList.push(val);
+			})
+			opponentsList.splice(mpindex,1);
+			var opponentsNames = [];
+			$.each(opponentsList, function(key,val) {
+				opponentsNames.push(val.fullname + "");
+			});
+
+			var opponentsString = opponentsNames.join(", ");
+			$(".tiebreakers-explanation").append("<div>" + wcteams[mpindex].fullname + " gets ahead of " + opponentsString + " by scoring more points!</div>");
 			return wcteams[mpindex];
 		}
 	}
@@ -442,17 +449,23 @@ function populateTables (teams) {
 
 	});
 
-
-	/*var constipation = [];
+	console.log("CONSTIPATION");
+	consFlag = 1;
+	var constipation = [];
 	$.each(teams, function(key,val) {
-		if ($('tr[data-team-id="' + val.id + '"]').hasClass("has-background-primary") === false) constipation.push(val);		
+		if ($('tr[data-team-id="' + val.id + '"]').hasClass("has-background-primary") === false) {
+			constipation.push(val);
+		}
 	});
 
 	$(".tiebreakers-explanation").append("<br/><div class='tiebreaker-title subtitle'>Constipation Tiebreakers:</div>");
 
 	var consseeds = [];
+	var consSeed1;
 	for (i=0; i<4; i++) {
-		consseeds.push(tiebreakMultipleTeamsWC(constipation));
+		consSeed1 = tiebreakMultipleTeamsWC(constipation);
+		console.log("Cons Seed pushed: ", consSeed1);
+		consseeds.push(consSeed1);
 		$.each(constipation, function (key, val) {
 			if(consseeds[i].id === val.id) {
 				constipation.splice(key,1);
@@ -464,13 +477,12 @@ function populateTables (teams) {
 	consseeds.push(constipation[winner]);
 	constipation.splice(winner,1);
 	consseeds.push(constipation[0]);
-	console.log(consseeds);
 	$.each(consseeds, function(key,val) {
 		seednumber = key+7;
 		$('tr[data-team-id="' + val.id + '"]').children().last().remove();
 		$('tr[data-team-id="' + val.id + '"]').append("<th> #" + seednumber  + "</th>");
 
-	});*/
+	});
 
 
 

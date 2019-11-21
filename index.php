@@ -14,7 +14,8 @@
 	<body>
 		<section class="section">
 			<div class="container">
-				<div class="title week-title">YERLİ VE MİLLİ PLAYOFF MACHINE</div> 
+				<div class="title week-title">YERLİ VE MİLLİ PLAYOFF MACHINE</div>
+				<div class="subtitle week-title">Just pick the winners!</div> 
 			</div>
 		</section>
 		<section class="section">
