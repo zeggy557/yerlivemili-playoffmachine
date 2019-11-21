@@ -16,18 +16,12 @@ function tiebreakTwoTeamsInDivision (firstteam, secondteam){
 	if(firstteam.wins > secondteam.wins) return 1;
 	else if(firstteam.wins < secondteam.wins) return 2;
 	else {
-		console.log("w-l eşit ", firstteam, secondteam);
-		console.log("aralarındaki maçlara bakılıyor");
 		if(firstteam.winlist[secondteam.id] > secondteam.winlist[firstteam.id]) return 1;
 		else if(firstteam.winlist[secondteam.id] < secondteam.winlist[firstteam.id]) return 2;
 		else {
-			console.log("aralarındaki maçlar eşit ", firstteam, secondteam);
-			console.log("division galibiyetine bakılıyor");
 			if(firstteam.divwins > secondteam.divwins) return 1;
 			else if(firstteam.divwins < secondteam.divwins) return 2;
 			else {
-				console.log("division maçları eşit ", firstteam, secondteam);
-				console.log("puanlara bakılıyor");
 				if(firstteam.points > secondteam.points) return 1;
 				else if(firstteam.points < secondteam.points) return 2;
 				else {
@@ -147,34 +141,26 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 
 function tiebreakDivision (sorteddiv, winnertb, wctb) {
 	var winner = 0;
-	console.log("tiebreak process");
 	//üçlü tiebreaker
 	if(winnertb.length === 2) {
-		console.log("üçlü tiebreaker");
 		sorteddiv = tiebreakThreeTeamsInDivision(sorteddiv);
 	}
 	//ikili tiebreker
 	else if(winnertb.length === 1) {
-		console.log("1st place tiebreak between", sorteddiv[0], winnertb[0]);
 		winner = tiebreakTwoTeamsInDivision(sorteddiv[0], winnertb[0]);
 		if(winner === 2) {
-			console.log("liderlik, winner = 2");
 			sorteddiv[1] = sorteddiv[0];
 			sorteddiv[0] = winnertb[0]
 		}
 	}
 	else if(wctb.length === 2) {
-		console.log("2nd place tiebreak between", wctb[0], wctb[1]);
 		winner = tiebreakTwoTeamsInDivision(wctb[0], wctb[1]);
 		if(winner === 2) {
-			console.log("ikinci sıra, winner = 2");
 			sorteddiv[1] = wctb[1];
 			sorteddiv[2] = wctb[0];
 		}
 	}
-	if (winner === 0) console.log("tiebreak yok");
-	console.log("tiebreak sorteddiv ", sorteddiv[0], sorteddiv[1], sorteddiv[2]);
-	return;
+	return sorteddiv;
 }
 
 function populateTables (teams) {
@@ -222,11 +208,15 @@ function populateTables (teams) {
 			secondplacetiebreaker.push(division[0]);
 			secondplacetiebreaker.push(division[1]);
 		}
-		//division tiebreakers
-		console.log("tb öncesi sorteddiv ", sorteddiv[0], sorteddiv[1], sorteddiv[2]);
-		tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
-		console.log("tb sonrası sorteddiv ", sorteddiv[0], sorteddiv[1], sorteddiv[2]); 
-	}); 
+		sorteddiv = tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
+		var tableofdiv = key;
+		$.each(sorteddiv, function (key, val){
+			var position = key + 1;
+			$('table[data-id="' + tableofdiv + '"]').children("tbody").append("<tr><th>" + position + "</th><td>" + val.fullname + "</td><td>" + val.wins + "-" + val.losses + "</td><td>" + val.divwins +"-" + val.divlosses + "</td><td>" + val.points + "</td><td></td></tr>");
+		});
+		
+	});
+
 }
 
 

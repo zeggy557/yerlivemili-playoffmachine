@@ -72,9 +72,9 @@
 		<section class="section">
 			<div class="container" id="tablecontainer">
 				<div class="columns" id="divisions">
-					<div class="column" id="division1">
+					<div class="column" id="division1" >
 						<div class="divisionname">Division 1</div>
-						<table class="table">
+						<table class="table" data-id=0>
 						<thead>
 						    <tr>
 						    	<th><abbr title="Position">Pos</abbr></th>
@@ -89,9 +89,9 @@
 						</tbody>
 						</table>
 					</div>
-					<div class="column" id="division2">
+					<div class="column" id="division2" >
 						<div class="divisionname">Division 2</div>
-						<table class="table">
+						<table class="table" data-id=1>
 						<thead>
 						    <tr>
 						    	<th><abbr title="Position">Pos</abbr></th>
@@ -106,9 +106,9 @@
 						</tbody>
 						</table>
 					</div>
-					<div class="column" id="division3">
+					<div class="column" id="division3" >
 						<div class="divisionname">Division 3</div>
-						<table class="table">
+						<table class="table" data-id=2>
 						<thead>
 						    <tr>
 						    	<th><abbr title="Position">Pos</abbr></th>
@@ -123,9 +123,9 @@
 						</tbody>
 						</table>
 					</div>
-					<div class="column" id="division4">
+					<div class="column" id="division4" >
 						<div class="divisionname">Division 4</div>
-						<table class="table">
+						<table class="table" data-id=3>
 						<thead>
 						    <tr>
 						    	<th><abbr title="Position">Pos</abbr></th>
