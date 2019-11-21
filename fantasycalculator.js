@@ -32,9 +32,14 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 		}
 	});
 	console.log("mostwins: ",mostwins, "team: " + wcteams[mwindex].fullname);
-	for (var i = eliminate.length -1; i >= 0; i--) { 
+	console.log("wcteams:", wcteams[0], wcteams[1],wcteams[2],wcteams[3]);
+	console.log("eliminate indexes:", eliminate[0], eliminate[1], eliminate[2]);
+	eliminate.sort(function(a, b){return a-b}); //sort eliminate
+	console.log("eliminate indexes:", eliminate[0], eliminate[1], eliminate[2]);
+	for (var i = eliminate.length -1; i >= 0; i--) {
 		wcteams.splice(eliminate[i], 1);
     }
+    console.log("wcteams after elimination:", wcteams[0], wcteams[1],wcteams[2],wcteams[3]);
 	if(wcteams.length === 1) {
 		console.log(wcteams[0]);
 		return wcteams[0];
@@ -89,6 +94,7 @@ function tiebreakMultipleTeamsWC (wcteams1) {
 			}
 		});
 		if(returnValue !== null) return returnValue;
+		eliminate.sort(function(a, b){return a-b}); //sort eliminate
 		for (var i = eliminate.length -1; i >= 0; i--) 
                 wcteams.splice(eliminate[i], 1); 
 		/* if(wcteams.length === 1) {
@@ -173,7 +179,7 @@ function tiebreakTwoTeamsInDivision (firstteam, secondteam){
 		}
 		else {
 			if(firstteam.divwins > secondteam.divwins){
-				$(".tiebreakers-explanation").append("<div>" + secondteam.fullname + " gets ahead of " + firstteam.fullname + " by more divisional wins.</div>");
+				$(".tiebreakers-explanation").append("<div>" + firstteam.fullname + " gets ahead of " + secondteam.fullname + " by more divisional wins.</div>");
 				return 1;
 			}
 			else if(firstteam.divwins < secondteam.divwins){

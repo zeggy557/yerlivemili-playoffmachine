@@ -9,7 +9,7 @@
     	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 		<script type="text/javascript" src="fantasycalculator.js"></script>
 		<link rel="stylesheet" type="text/css" href="fantasycalculator.css">
-		<title>Fantasy Calculator</title>
+		<title>Playoff Machine</title>
 	</head>
 	<body>
 		<section class="section">
@@ -39,7 +39,7 @@
 				 			<button class="button is-light team team2" id="evliwin1" data-teamname="evli">Evli Mayfields</button>
 						</div>
 						<div class="buttons is-centered divisional" id="w12m5">
-				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>vs
+				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürek MirOglusu</button>vs
 				 			<button class="button   is-light team team2" id="blackeagleswin1" data-teamname="blackeagles">Wisconsin Blackeagles</button>
 						</div>
 						<div class="buttons is-centered divisional" id="w12m6">
@@ -50,7 +50,7 @@
   					<div class="column" id="matchweek13">
   						<div class="week-title subtitle is-centered">Week 13</div>
    						<div class="buttons is-centered" id="w13m1">
-				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürekMirOglusu</button>vs
+				  			<button class="button   is-light team team1" id="deliyurekwin1" data-teamname="deliyurek">DeliYürek MirOglusu</button>vs
 				 			<button class="button   is-light team team2" id="ayranciwin1" data-teamname="ayranci">South Ayrancı Phrygians</button>
 						</div>
 						<div class="buttons is-centered" id="w13m2">
