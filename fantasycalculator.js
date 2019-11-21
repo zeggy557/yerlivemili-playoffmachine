@@ -1,3 +1,8 @@
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
 function calculateTotalWins(winlist) {
 	var totalwins;
 	$.each(winlist, function (key, val) {
@@ -7,7 +12,7 @@ function calculateTotalWins(winlist) {
 
 }
 
-function tiebreakTwoTeams (firstteam, secondteam){
+function tiebreakTwoTeamsInDivision (firstteam, secondteam){
 	if(firstteam.wins > secondteam.wins) return 1;
 	else if(firstteam.wins < secondteam.wins) return 2;
 	else {
@@ -25,21 +30,133 @@ function tiebreakTwoTeams (firstteam, secondteam){
 				console.log("puanlara bakılıyor");
 				if(firstteam.points > secondteam.points) return 1;
 				else if(firstteam.points < secondteam.points) return 2;
-				else alert("PUAN EŞİTLİĞİ VAR? NANİ?");
+				else {
+					console.log("PUAN EŞİTLİĞİ VAR! ", firstteam.fullname, " VE ", secondteam.fullname, " ARASINDA KURA ÇEKİLİYOR!");
+					var winner = getRndInteger(1,2);
+					if(winner === 1) {
+						console.log("KAZANAN TAKIM: ", firstteam.fullname);
+						return 1;
+					}
+					else {
+						console.log("KAZANAN TAKIM: ", secondteam.fullname);
+						return 2;
+					}
+				}
+
 			}
-		}
+		} 
 	}
 }
+
+function tiebreakThreeTeamsInDivision (sorteddiv) {
+	var firstteam = sorteddiv[0];
+	var secondteam = sorteddiv[1];
+	var thirdteam = sorteddiv[2];
+	var winner = 0;
+	var mostdivwins = 0, mdwindex = 0;
+
+	$.each(sorteddiv, function (key, team) {
+		if(team.divwins > mostdivwins) {
+				mostdivwins = team.divwins;
+				mdwindex = key;
+		}
+	});
+	if(mostdivwins === 4) {
+		var tmp = sorteddiv[0];
+		sorteddiv[0] = sorteddiv[mdwindex];
+		sorteddiv[mdwindex] = tmp;
+		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
+		if(winner === 2) {
+			tmp = sorteddiv[1];
+			sorteddiv[1] = sorteddiv[2];
+			sorteddiv[2] = tmp;
+		}
+		return sorteddiv;
+		console.log("dört div win");
+	}
+	else if (mostdivwins === 2) {
+		var mostpoints = 0,  mpindex = 0;
+		$.each(sorteddiv, function (key, team) {
+			if(team.points > mostpoints) {
+				mostpoints = team.points;
+				mpindex = key;
+			}
+			else if(team.points === mostpoints) {
+				console.log("PUAN EŞİTLİĞİ VAR! ", sorteddiv[mpindex].fullname, " VE ", team.fullname, " ARASINDA KURA ÇEKİLİYOR!");
+					var winner = getRndInteger(1,2);
+					if(winner === 1) {
+						console.log("KAZANAN TAKIM: ", sorteddiv[mpindex].fullname);
+					}
+					else {
+						console.log("KAZANAN TAKIM: ", team.fullname);
+						mpindex = key;
+					}
+			}
+		});
+		var tmp = sorteddiv[0];
+		sorteddiv[0] = sorteddiv[mpindex];
+		sorteddiv[mpindex] = tmp;
+		console.log("most point ile kazanan ", sorteddiv[0].fullname);
+		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
+		if(winner === 2) {
+			tmp = sorteddiv[1];
+			sorteddiv[1] = sorteddiv[2];
+			sorteddiv[2] = tmp;
+		}
+		return sorteddiv;
+	}
+	else { //mostdivwins === 3
+		var threedivwins = [];
+		var nonthreedivwins = [];
+		$.each(sorteddiv, function (key, team) {
+			if(team.divwins === 3) {
+				threedivwins.push(key);
+			}
+			else {
+				nonthreedivwins.push(key);
+			}
+		});
+		if(threedivwins.length === 1) {
+			var tmp = sorteddiv[0];
+			sorteddiv[0] = sorteddiv[threedivwins[0]];
+			sorteddiv[threedivwins[0]] = tmp;
+			winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
+			if(winner === 2) {
+				tmp = sorteddiv[1];
+				sorteddiv[1] = sorteddiv[2];
+				sorteddiv[2] = tmp;
+			}
+			return sorteddiv;
+		}
+		else { //threedivwins.length === 2
+			var tmp = sorteddiv[2];
+			sorteddiv[2] = sorteddiv[nonthreedivwins[0]];
+			sorteddiv[nonthreedivwins[0]] = tmp;
+			winner = tiebreakTwoTeamsInDivision(sorteddiv[0],sorteddiv[1]);
+			if(winner === 2) {
+				tmp = sorteddiv[0];
+				sorteddiv[0] = sorteddiv[1];
+				sorteddiv[1] = tmp;
+			}
+			return sorteddiv;
+
+		}
+	} 
+
+} 
 
 function tiebreakDivision (sorteddiv, winnertb, wctb) {
 	var winner = 0;
 	console.log("tiebreak process");
 	//üçlü tiebreaker
-	if(winnertb.length === 2) {}
+	if(winnertb.length === 2) {
+		console.log("üçlü tiebreaker");
+		sorteddiv = tiebreakThreeTeamsInDivision(sorteddiv);
+	}
 	//ikili tiebreker
 	else if(winnertb.length === 1) {
 		console.log("1st place tiebreak between", sorteddiv[0], winnertb[0]);
-		winner = tiebreakTwoTeams(sorteddiv[0], winnertb[0]);
+		winner = tiebreakTwoTeamsInDivision(sorteddiv[0], winnertb[0]);
 		if(winner === 2) {
 			console.log("liderlik, winner = 2");
 			sorteddiv[1] = sorteddiv[0];
@@ -48,7 +165,7 @@ function tiebreakDivision (sorteddiv, winnertb, wctb) {
 	}
 	else if(wctb.length === 2) {
 		console.log("2nd place tiebreak between", wctb[0], wctb[1]);
-		winner = tiebreakTwoTeams(wctb[0], wctb[1]);
+		winner = tiebreakTwoTeamsInDivision(wctb[0], wctb[1]);
 		if(winner === 2) {
 			console.log("ikinci sıra, winner = 2");
 			sorteddiv[1] = wctb[1];
