@@ -71,7 +71,7 @@
  		   </div>
 		<section class="section">
 			<div class="container" id="tablecontainer">
-				<div class="columns" id="divisions">
+				<div class="columns">
 					<div class="column" id="division1" >
 						<div class="divisionname">Division 1</div>
 						<table class="table" data-id=0>
@@ -106,6 +106,8 @@
 						</tbody>
 						</table>
 					</div>
+				</div>
+				<div class="columns">
 					<div class="column" id="division3" >
 						<div class="divisionname">Division 3</div>
 						<table class="table" data-id=2>

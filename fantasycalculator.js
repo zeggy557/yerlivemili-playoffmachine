@@ -210,6 +210,7 @@ function populateTables (teams) {
 		}
 		sorteddiv = tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
 		var tableofdiv = key;
+		$('table[data-id="' + tableofdiv + '"]').children("tbody").empty();
 		$.each(sorteddiv, function (key, val){
 			var position = key + 1;
 			$('table[data-id="' + tableofdiv + '"]').children("tbody").append("<tr><th>" + position + "</th><td>" + val.fullname + "</td><td>" + val.wins + "-" + val.losses + "</td><td>" + val.divwins +"-" + val.divlosses + "</td><td>" + val.points + "</td><td></td></tr>");
@@ -222,15 +223,7 @@ function populateTables (teams) {
 
 $(document).ready(function() {
 	var teamsjson = $.getJSON( "fantasycalculator.json", function (data) {
-		$.each(data.teams, function (key, val) {
-		  	var totalwins = 0;
-		  	$.each(val.winlist, function (key, val) {
-		  		totalwins += val;
-		  	});
-		  	var newdiv = "<div>" +  val.fullname + " W: " + val.wins + " L: " + val.losses + " DW: " + val.divwins + " DL: " + val.divlosses + " Points: " + val.points + "</div>";
-		  	$(newdiv).appendTo("#maincontainer");
-		 });
-
+		populateTables(data.teams);
 		$(".team").click(function() {
 			if($(this).hasClass("active-toggle") === false) {
 				$(this).addClass("active-toggle");
