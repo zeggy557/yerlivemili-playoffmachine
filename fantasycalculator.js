@@ -12,6 +12,112 @@ function calculateTotalWins(winlist) {
 
 }
 
+function tiebreakMultipleTeamsWC (wcteams) {
+	var mostwins = 0, mwindex = 0;
+	var eliminate = [];
+	var winner;
+	$.each(wcteams, function (key, team) {
+		if(team.wins > mostwins) {
+				if(key !== 0) eliminate.push(mwindex);
+				mostwins = team.wins;
+				mwindex = key;
+		}
+		else if(team.wins < mostwins) {
+			eliminate.push(key);
+		}
+	});
+	$.each(eliminate, function (key, val) {
+		wcteams.splice(val,1);
+	});
+	if(wcteams.length === 1) {
+		return wcteams[0];
+	}
+	if(wcteams.length === 2) {
+		winner = tiebreakTwoTeamsWC(wcteams[0],wcteams[1]) -1;
+		if(winner === 1) return wcteams[0];
+		else return wcteams[1];
+	}
+	else {
+		var wcteamids = [];
+		$.each(wcteams, function (key, val) {
+			wcteamids.push(val.id);
+		});
+		var wincounts = [];
+		var wincount = 0;
+		$.each(wcteams, function (key, val) {
+			wincount = 0;
+			var i;
+			for (i = 0; i < wcteamids.length; i++) {
+  				wincount += val.winlist[wcteamids[i]];
+			}
+			wincounts.push(wincount);
+		});
+		eliminate = [];
+		$.each(wcteams, function(key,val) {
+			if(wincounts[key] === wcteams.length -1) {
+				return val;
+			}
+			else if(wincounts[key] === 0) {
+				eliminate.push(key);
+			}
+		});
+		$.each(eliminate, function (key, val) {
+			wcteams.splice(val,1);
+		});
+		if(wcteams.length === 1) {
+			return wcteams[0];
+		}
+		if(wcteams.length === 2) {
+			winner = tiebreakTwoTeamsWC(wcteams[0],wcteams[1]) -1;
+			if(winner === 1) return wcteams[0];
+			else return wcteams[1];
+		}
+		else {
+			var mostpoints = 0,  mpindex = 0;
+			$.each(wcteams, function (key, team) {
+				if(team.points > mostpoints) {
+					mostpoints = team.points;
+					mpindex = key;
+				}
+				else if(team.points === mostpoints) {
+					winner = tiebreakTwoTeamsWC(team, wcteams[mpindex]);
+					if(winner === 1) {
+						mostpoints = team.points;
+						mpindex = key;
+					}
+				}
+			});
+			return wcteams[mpindex];
+		}
+	}
+}
+
+function tiebreakTwoTeamsWC (firstteam, secondteam){
+	if(firstteam.wins > secondteam.wins) return 1;
+	else if(firstteam.wins < secondteam.wins) return 2;
+	else {
+		if(firstteam.winlist[secondteam.id] > secondteam.winlist[firstteam.id]) return 1;
+		else if(firstteam.winlist[secondteam.id] < secondteam.winlist[firstteam.id]) return 2;
+		else {
+			if(firstteam.points > secondteam.points) return 1;
+			else if(firstteam.points < secondteam.points) return 2;
+			else {
+				console.log("PUAN EŞİTLİĞİ VAR! ", firstteam.fullname, " VE ", secondteam.fullname, " ARASINDA KURA ÇEKİLİYOR!");
+				var winner = getRndInteger(1,2);
+				if(winner === 1) {
+					console.log("KAZANAN TAKIM: ", firstteam.fullname);
+					return 1;
+				}
+				else {
+					console.log("KAZANAN TAKIM: ", secondteam.fullname);
+					return 2;
+				}
+			}
+
+		}
+	} 
+}
+
 function tiebreakTwoTeamsInDivision (firstteam, secondteam){
 	if(firstteam.wins > secondteam.wins) return 1;
 	else if(firstteam.wins < secondteam.wins) return 2;
@@ -189,6 +295,7 @@ function populateTables (teams) {
 				mwindex = key;
 			}
 			else if(team.wins === mostwins) {
+				console.log(team, division[mwindex]);
 				firstplacetiebreaker.push(team);
 			}
 		});
