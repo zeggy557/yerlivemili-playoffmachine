@@ -21,8 +21,8 @@
 				 			<button class="button is-primary is-light team team2" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
 						</div>
 						<div class="buttons" id="w12m2">
-				  			<button class="button is-primary is-light team team1" id="crowswin1" data-teamname="luol">Göztepe Crows</button>
-				 			<button class="button is-primary is-light team team2" id="heuvelringwin1" data-teamname="nokia">Heuvelring Mohair Goats</button>
+				  			<button class="button is-primary is-light team team1" id="crowswin1" data-teamname="crows">Göztepe Crows</button>
+				 			<button class="button is-primary is-light team team2" id="heuvelringwin1" data-teamname="heuvelring">Heuvelring Mohair Goats</button>
 						</div>
 						<div class="buttons divisional" id="w12m3">
 				  			<button class="button is-primary is-light team team1" id="donkeyswin1" data-teamname="donkeys">Billionarie Donkeys</button>
