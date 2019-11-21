@@ -7,6 +7,60 @@ function calculateTotalWins(winlist) {
 
 }
 
+function tiebreakDivision (sorteddiv, winnertb, wctb) {
+
+}
+
+function populateTables (teams) {
+	var divisions = [
+		[],
+		[],
+		[],
+		[]
+	];
+	$.each(teams, function (key, val) {
+		divisions[val.division - 1].push(val);	
+	});
+	var sorteddiv = [];
+	var mostwins = 0, mwindex = 0;
+	var firstplacetiebreaker = [];
+	var secondplacetiebreaker = [];
+	//sort by wins first
+	$.each(divisions, function (key, division) {
+		sorteddiv = [];
+		firstplacetiebreaker = [];
+		secondplacetiebreaker = [];
+		mostwins = 0, mwindex = 0;
+		$.each(division, function (key, team) {
+			if(team.wins > mostwins) {
+				mostwins = team.wins;
+				mwindex = key;
+			}
+			else if(team.wins === mostwins) {
+				firstplacetiebreaker.push(team);
+			}
+		});
+		sorteddiv.push(division[mwindex]);
+		if(division[0].wins > division[1].wins) {
+			sorteddiv.push(division[0]);
+			sorteddiv.push(division[1]);
+		}
+		else if(division[1].wins > division[0].wins) {
+			sorteddiv.push(division[1]);
+			sorteddiv.push(division[0]);
+		}
+		else {
+			sorteddiv.push(division[0]);
+			sorteddiv.push(division[1]);
+			secondplacetiebreaker.push(division[0]);
+			secondplacetiebreaker.push(division[1]);
+		}
+		//division tiebreakers
+		tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
+		console.log("sorteddiv ", sorteddiv); 
+	}); 
+}
+
 
 $(document).ready(function() {
 	var teamsjson = $.getJSON( "fantasycalculator.json", function (data) {
@@ -87,6 +141,7 @@ $(document).ready(function() {
 				console.log(wteamdata.fullname, wteamdata.wins, wteamdata.losses, wteamdata.divwins, wteamdata.divlosses);
 				console.log(lteamdata.fullname, lteamdata.wins, lteamdata.losses, lteamdata.divwins, lteamdata.divlosses);				
 				console.log(wteamdata.winlist[lid], lteamdata.winlist[wid]); */
+				populateTables(data.teams);
 
 			}
 

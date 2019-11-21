@@ -1,18 +1,6 @@
 {
   "teams": {
-    "donkeys": {
-      "name": "donkeys",
-      "id": 0,
-      "fullname": "Billionaire Donkeys",
-      "division": 1,
-      "wins": 9,
-      "losses": 2,
-      "divwins": 1,
-      "divlosses": 1,
-      "points": 1331.26,
-      "winlist": [0,0,1,1,1,1,1,0,1,1,1,1]
-    },
-    "ayranci": {
+        "ayranci": {
       "name": "ayranci",
       "id": 1,
       "fullname": "South Ayrancı Phrygians",
@@ -36,17 +24,17 @@
       "points": 1103.68,
       "winlist": [0,1,0,0,1,1,1,1,0,0,0,0]
     },
-   "heuvelring": {
-      "name": "heuvelring",
-      "id": 3,
-      "fullname": "Heuvelring Moahir Goats",
-      "division": 2,
-      "wins": 6,
-      "losses": 5,
-      "divwins": 2,
+    "donkeys": {
+      "name": "donkeys",
+      "id": 0,
+      "fullname": "Billionaire Donkeys",
+      "division": 1,
+      "wins": 9,
+      "losses": 2,
+      "divwins": 1,
       "divlosses": 1,
-      "points": 1086.30,
-      "winlist": [0,0,0,0,1,1,1,0,1,0,1,1]
+      "points": 1331.26,
+      "winlist": [0,0,1,1,1,1,1,0,1,1,1,1]
     },
     "deliyurek": {
       "name": "deliyurek",
@@ -60,6 +48,18 @@
       "points": 1119.94,
       "winlist": [0,0,0,1,0,1,0,0,0,1,0,1]
     },
+    "heuvelring": {
+      "name": "heuvelring",
+      "id": 3,
+      "fullname": "Heuvelring Moahir Goats",
+      "division": 2,
+      "wins": 6,
+      "losses": 5,
+      "divwins": 2,
+      "divlosses": 1,
+      "points": 1086.30,
+      "winlist": [0,0,0,0,1,1,1,0,1,0,1,1]
+    },
     "blackeagles": {
       "name": "blackeagles",
       "id": 5,
@@ -71,6 +71,18 @@
       "divlosses": 2,
       "points": 1094.90,
       "winlist": [0,1,0,0,0,0,0,0,0,1,1,1]
+    },
+    "karsiyaka": {
+      "name": "karsiyaka",
+      "id": 8,
+      "fullname": "Karsiyaka 35 5ers",
+      "division": 3,
+      "wins": 5,
+      "losses": 6,
+      "divwins": 2,
+      "divlosses": 0,
+      "points": 1146.18,
+      "winlist": [0,0,1,0,1,1,1,1,0,0,0,0]
     },
     "killers": {
       "name": "killers",
@@ -95,18 +107,6 @@
       "divlosses": 2,
       "points": 1241.12,
       "winlist": [1,0,0,1,1,1,1,0,0,1,0,0]
-    },
-    "karsiyaka": {
-      "name": "karsiyaka",
-      "id": 8,
-      "fullname": "Karsiyaka 35 5ers",
-      "division": 3,
-      "wins": 5,
-      "losses": 6,
-      "divwins": 2,
-      "divlosses": 0,
-      "points": 1146.18,
-      "winlist": [0,0,1,0,1,1,1,1,0,0,0,0]
     },
     "gisele": {
       "name": "gisele",
