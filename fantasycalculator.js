@@ -12,13 +12,18 @@ function calculateTotalWins(winlist) {
 
 }
 
-function tiebreakMultipleTeamsWC (wcteams) {
-	var mostwins = 0, mwindex = 0;
+function tiebreakMultipleTeamsWC (wcteams1) {
+	var mostwins = 0;
+	var mwindex = 0;
 	var eliminate = [];
 	var winner;
+	var wcteams = $.extend(true, [], wcteams1);
+	var returnValue = null;
 	$.each(wcteams, function (key, team) {
 		if(team.wins > mostwins) {
-				if(key !== 0) eliminate.push(mwindex);
+				if(key !== 0) {
+					eliminate.push(mwindex);
+				}
 				mostwins = team.wins;
 				mwindex = key;
 		}
@@ -26,16 +31,16 @@ function tiebreakMultipleTeamsWC (wcteams) {
 			eliminate.push(key);
 		}
 	});
-	$.each(eliminate, function (key, val) {
-		wcteams.splice(val,1);
-	});
+	for (var i = eliminate.length -1; i >= 0; i--) { 
+		wcteams.splice(eliminate[i], 1);
+    }
+    console.log("wcteams.length=", wcteams.length);
 	if(wcteams.length === 1) {
 		return wcteams[0];
 	}
 	if(wcteams.length === 2) {
 		winner = tiebreakTwoTeamsWC(wcteams[0],wcteams[1]) -1;
-		if(winner === 1) return wcteams[0];
-		else return wcteams[1];
+		return wcteams[winner];
 	}
 	else {
 		var wcteamids = [];
@@ -52,20 +57,24 @@ function tiebreakMultipleTeamsWC (wcteams) {
 			}
 			wincounts.push(wincount);
 		});
+		console.log(wincounts[0],wincounts[1],wincounts[2]);
 		eliminate = [];
 		$.each(wcteams, function(key,val) {
 			if(wincounts[key] === wcteams.length -1) {
+
 				$(".tiebreakers-explanation").append("<div>" + val.fullname + " gets ahead of his opponents by having H2H wins against all of them!</div>" );
-				return val;
+				console.log("return", val);
+				returnValue = val;
+				return false;
 			}
 			else if(wincounts[key] === 0) {
-				$(".tiebreakers-explanation").append("<div>" + val.fullname + " is eliminated because he has zero H2H wins against his opponents!</div>");
+				$(".tiebreakers-explanation").append("<div>" + val.fullname + " is eliminated because he has zero H2H wins against his opponents.</div>");
 				eliminate.push(key);
 			}
 		});
-		$.each(eliminate, function (key, val) {
-			wcteams.splice(val,1);
-		});
+		if(returnValue !== null) return returnValue;
+		for (var i = eliminate.length -1; i >= 0; i--) 
+                wcteams.splice(eliminate[i], 1); 
 		if(wcteams.length === 1) {
 			$(".tiebreakers-explanation").append("<div>" + wcteams[0].fullname + " gets ahead of his opponents by having H2H wins against all of them!</div>");
 			return wcteams[0];
@@ -230,7 +239,7 @@ function tiebreakThreeTeamsInDivision (sorteddiv) {
 		var tmp = sorteddiv[0];
 		sorteddiv[0] = sorteddiv[mpindex];
 		sorteddiv[mpindex] = tmp;
-		$(".tiebreakers-explanation").append("<div>" + sortediv[0].fullname + " wins division by scoring more points!</div>");
+		$(".tiebreakers-explanation").append("<div>" + sorteddiv[0].fullname + " wins division by scoring more points!</div>");
 		winner = tiebreakTwoTeamsInDivision(sorteddiv[1],sorteddiv[2]);
 		if(winner === 2) {
 			tmp = sorteddiv[1];
@@ -351,20 +360,74 @@ function populateTables (teams) {
 			secondplacetiebreaker.push(division[1]);
 		}
 		sorteddiv = tiebreakDivision(sorteddiv, firstplacetiebreaker, secondplacetiebreaker);
+		division = sorteddiv;
+		divisions[key] = division;
 		var tableofdiv = key;
 		$('table[data-id="' + tableofdiv + '"]').children("tbody").empty();
 		$.each(sorteddiv, function (key, val){
 			var position = key + 1;
 			$('table[data-id="' + tableofdiv + '"]').children("tbody").append("<tr><th>" + position + "</th><td>" + val.fullname + "</td><td>" + val.wins + "-" + val.losses + "</td><td>" + val.divwins +"-" + val.divlosses + "</td><td>" + val.points + "</td><td></td></tr>");
 		});
-		
+
 	});
+	var seeds = [];
+	var groupwinners = [divisions[0][0], divisions[1][0],divisions[2][0],divisions[3][0]];
+	$(".tiebreakers-explanation").append("<div class='tiebreaker-title'>Seeding Tiebreakers:</div>");
+	console.log("groupwinners 1a: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
+	var seed1 = tiebreakMultipleTeamsWC(groupwinners);
+	console.log(seed1);
+	seeds.push(seed1);
+	console.log(seeds[0]);
+	console.log("groupwinners 1b: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
+	var exclude = seeds[0].division -1;
+	groupwinners = [];
+	for (var i=0; i<4;i++) {
+		if(i !== exclude) {
+			groupwinners.push(divisions[i][0]);
+		}
+	}
+	console.log("groupwinners 2a: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
+	var seed2 = tiebreakMultipleTeamsWC(groupwinners);
+	console.log("groupwinners 2b: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
+	console.log("seed2: ", seed2)
+	seeds.push(seed2);
+	console.log(seeds[1], seeds[2]);
+	var exclude2 = seeds[1].division -1;
+	groupwinners = [];
+	for (var i=0; i<4;i++) {
+		if(i !== exclude && i !=exclude2) {
+			groupwinners.push(divisions[i][0]);
+		}
+	}
+	console.log("groupwinners 3: ", groupwinners[0],groupwinners[1],groupwinners[2],groupwinners[3]);
+	var winner = tiebreakTwoTeamsWC(groupwinners[0],groupwinners[1]);
+	if(winner === 1 ) {
+		seeds.push(groupwinners[0]);
+		seeds.push(groupwinners[1]);
+	}
+	else {
+		seeds.push(groupwinners[1]);
+		seeds.push(groupwinners[0]);
+	}
+	var wildcards = [divisions[0][1], divisions[1][1],divisions[2][1],divisions[3][1]];
+	seeds.push(tiebreakMultipleTeamsWC(wildcards));
+	exclude = seeds[4].division-1;
+	wildcards = [];
+	for (var i=0; i<4;i++) {
+		if(i !== exclude) {
+			wildcards.push(divisions[i][1]);
+		}
+	}
+	wildcards.push(divisions[exclude][2]);
+	seeds.push(tiebreakMultipleTeamsWC(wildcards));
+	console.log(seeds);
 
 }
 
 
 $(document).ready(function() {
 	var teamsjson = $.getJSON( "fantasycalculator.json", function (data) {
+		$(".tiebreakers-explanation").append("<div class='tiebreaker-title'>Divisional Tiebreakers:</div>");
 		populateTables(data.teams);
 		$(".team").click(function() {
 			if($(this).hasClass("active-toggle") === false) {
@@ -429,6 +492,7 @@ $(document).ready(function() {
 					}
 				}
 				$(".tiebreakers-explanation").empty();
+				$(".tiebreakers-explanation").append("<div class='tiebreaker-title'>Divisional Tiebreakers:</div>");
 				populateTables(data.teams);
 
 			}
