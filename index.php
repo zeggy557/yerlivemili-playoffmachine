@@ -22,7 +22,7 @@
     		<div class="container" id="selectioncontainer">
     			<div class="columns" id="matchweeks">
   					<div class="column" id="matchweek12">
-  						<div class="week-title subtitle is-centered">Week 12</div>
+  						<div class="week-title subtitle is-centered">Week 12</div> 
 				    	<div class="buttons is-centered" id="w12m1">
 				  			<button class="button is-static is-light is-success team1" id="luolwin1" data-teamname="luol">Luol Dengim Değilsin</button>vs
 				 			<button class="button is-static is-light is-danger team2" id="nokiawin1" data-teamname="nokia">İnce Nokia Chargers</button>
