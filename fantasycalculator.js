@@ -1,5 +1,3 @@
-var consFlag = 0;
-
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
@@ -449,8 +447,6 @@ function populateTables (teams) {
 
 	});
 
-	console.log("CONSTIPATION");
-	consFlag = 1;
 	var constipation = [];
 	$.each(teams, function(key,val) {
 		if ($('tr[data-team-id="' + val.id + '"]').hasClass("has-background-primary") === false) {
@@ -464,7 +460,6 @@ function populateTables (teams) {
 	var consSeed1;
 	for (i=0; i<4; i++) {
 		consSeed1 = tiebreakMultipleTeamsWC(constipation);
-		console.log("Cons Seed pushed: ", consSeed1);
 		consseeds.push(consSeed1);
 		$.each(constipation, function (key, val) {
 			if(consseeds[i].id === val.id) {
