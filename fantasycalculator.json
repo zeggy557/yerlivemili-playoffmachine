@@ -5,24 +5,24 @@
       "id": 1,
       "fullname": "South Ayrancı Phrygians",
       "division": 1,
-      "wins": 7,
+      "wins": 8,
       "losses": 4,
-      "divwins": 2,
+      "divwins": 3,
       "divlosses": 1,
-      "points": 1187.06,
-      "winlist": [1,0,1,1,0,0,0,1,1,1,1,0]
+      "points": 1312.24,
+      "winlist": [2,0,1,1,0,0,0,1,1,1,1,0]
     },
     "crows": {
       "name": "crows",
       "id": 2,
       "fullname": "Goztepe Crows",
       "division": 1,
-      "wins": 5,
+      "wins": 6,
       "losses": 6,
       "divwins": 1,
       "divlosses": 2,
-      "points": 1103.68,
-      "winlist": [0,1,0,0,1,1,1,1,0,0,0,0]
+      "points": 1188.16,
+      "winlist": [0,1,0,1,1,1,1,1,0,0,0,0]
     },
     "donkeys": {
       "name": "donkeys",
@@ -30,10 +30,10 @@
       "fullname": "Billionaire Donkeys",
       "division": 1,
       "wins": 9,
-      "losses": 2,
+      "losses": 3,
       "divwins": 1,
-      "divlosses": 1,
-      "points": 1331.26,
+      "divlosses": 2,
+      "points": 1420.3,
       "winlist": [0,0,1,1,1,1,1,0,1,1,1,1]
     },
     "deliyurek": {
@@ -42,10 +42,10 @@
       "fullname": "DeliYurek MirOglusu",
       "division": 2,
       "wins": 4,
-      "losses": 7,
+      "losses": 8,
       "divwins": 2,
-      "divlosses": 1,
-      "points": 1119.94,
+      "divlosses": 2,
+      "points": 1210.6,
       "winlist": [0,0,0,1,0,1,0,0,0,1,0,1]
     },
     "heuvelring": {
@@ -54,10 +54,10 @@
       "fullname": "Heuvelring Mohair Goats",
       "division": 2,
       "wins": 6,
-      "losses": 5,
+      "losses": 6,
       "divwins": 2,
       "divlosses": 1,
-      "points": 1086.30,
+      "points": 1149.8,
       "winlist": [0,0,0,0,1,1,1,0,1,0,1,1]
     },
     "blackeagles": {
@@ -65,12 +65,12 @@
       "id": 5,
       "fullname": "Wisconsin Blackeagles",
       "division": 2,
-      "wins": 4,
+      "wins": 5,
       "losses": 7,
-      "divwins": 0,
+      "divwins": 1,
       "divlosses": 2,
-      "points": 1094.90,
-      "winlist": [0,1,0,0,0,0,0,0,0,1,1,1]
+      "points": 1246.72,
+      "winlist": [0,1,0,0,1,0,0,0,0,1,1,1]
     },
     "karsiyaka": {
       "name": "karsiyaka",
@@ -78,10 +78,10 @@
       "fullname": "Karsiyaka 35 5ers",
       "division": 3,
       "wins": 5,
-      "losses": 6,
+      "losses": 7,
       "divwins": 2,
-      "divlosses": 0,
-      "points": 1146.18,
+      "divlosses": 1,
+      "points": 1231.12,
       "winlist": [0,0,1,0,1,1,1,1,0,0,0,0]
     },
     "killers": {
@@ -89,24 +89,24 @@
       "id": 6,
       "fullname": "The Cereal Killers",
       "division": 3,
-      "wins": 6,
+      "wins": 7,
       "losses": 5,
-      "divwins": 1,
+      "divwins": 2,
       "divlosses": 2,
-      "points": 1241.12,
-      "winlist": [0,1,0,0,1,1,0,1,0,0,1,1]
+      "points": 1353.34,
+      "winlist": [0,1,0,0,1,1,0,1,1,0,1,1]
     },
     "luol" :{
       "name": "luol",
       "id": 7,
       "fullname": "Luol Dengim Değilsin",
       "division": 3,
-      "wins": 6,
+      "wins": 7,
       "losses": 5,
       "divwins": 1,
       "divlosses": 2,
-      "points": 1292.84,
-      "winlist": [1,0,0,1,1,1,1,0,0,1,0,0]
+      "points": 1429.4,
+      "winlist": [1,0,0,1,1,1,1,0,0,1,0,1]
     },
     "gisele": {
       "name": "gisele",
@@ -114,10 +114,10 @@
       "fullname": "Gisele'in Askerleri",
       "division": 4,
       "wins": 5,
-      "losses": 6,
+      "losses": 7,
       "divwins": 2,
-      "divlosses": 1,
-      "points": 1169.14,
+      "divlosses": 2,
+      "points": 1246.14,
       "winlist": [0,0,1,1,0,0,0,0,1,0,1,1]
     },
     "evli": {
@@ -125,12 +125,12 @@
       "id": 10,
       "fullname": "Evli Mayfields",
       "division": 4,
-      "wins": 5,
+      "wins": 6,
       "losses": 6,
-      "divwins": 1,
+      "divwins": 2,
       "divlosses": 1,
-      "points": 1126.94,
-      "winlist": [0,0,1,0,1,0,0,1,1,0,0,1]
+      "points": 1227.74,
+      "winlist": [0,0,1,0,1,0,0,1,1,1,0,1]
     },
     "nokia": {
       "name": "nokia",
@@ -138,10 +138,10 @@
       "fullname": "İnce Nokia Chargers",
       "division": 4,
       "wins": 4,
-      "losses": 7,
+      "losses": 8,
       "divwins": 1,
       "divlosses": 2,
-      "points": 1079.32,
+      "points": 1166.78,
       "winlist": [0,1,1,0,0,0,0,0,1,1,0,0]
     }
   }
